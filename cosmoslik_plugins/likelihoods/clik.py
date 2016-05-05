@@ -9,12 +9,14 @@ class clik(SlikPlugin):
     
     def __init__(self,
                  clik_file,
+                 lensing = False,
                  **nuisance):
         
         super(clik,self).__init__(**nuisance)
 
         import clik as _clik
-        self.clik = _clik.clik(clik_file)            
+        if lensing == True: self.clik = _clik.clik_lensing(clik_file)
+        else: self.clik = _clik.clik(clik_file)            
         
         
     def __call__(self, cmb):
